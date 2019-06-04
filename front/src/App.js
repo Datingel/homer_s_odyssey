@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
+import SignUp from './SignUp.js';
 
-function App() {
+class App extends Component {
+  render() {
   return (
     <div>
-      <h1>Homers Oddysee</h1>
+      <SignUp /> 
     </div>
-  );
+  )
+}
 }
 
 export default App;
