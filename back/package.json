@@ -1,0 +1,16 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Wild server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "raphael_lautenbacher",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.17.1",
+    "express-router": "0.0.1",
+    "morgan": "^1.9.0"
+  }
+}
