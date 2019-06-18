@@ -2,14 +2,12 @@ import React, {Component} from 'react';
 import './App.css';
 import SignUp from './SignUp.js';
 
-class App extends Component {
-  render() {
+const App = () => {
   return (
     <div>
-      <SignUp /> 
+      <SignUp />
     </div>
-  )
-}
-}
+  );
+};
 
 export default App;
