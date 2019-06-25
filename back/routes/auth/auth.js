@@ -12,14 +12,15 @@ app.use(
 );
 
 myRouter.post('/signup', function(req, res, next) {
-  const args = {
-    email: req.body.email,
-    password: req.body.password,
-    name: req.body.name,
-    lastname: req.body.lastname,
+  console.log(req.body);
+  const newUser = {
+    email: req.body.email || '',
+    password: req.body.password || '',
+    name: req.body.name || '',
+    lastname: req.body.lastname || '',
   };
-  connection.query('INSERT INTO users SET ?', args, function(error, results, fields) {
-    if (error) res.status(500).send('Something went wrong!');
+  connection.query('INSERT INTO users SET ?', newUser, function(error, results, fields) {
+    if (error) res.status(402).send(error);
     else res.status(200).send('Registration Successful');
   });
 });
