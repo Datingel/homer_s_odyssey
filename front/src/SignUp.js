@@ -9,17 +9,28 @@ class SignUp extends Component {
       email: '',
       password: '',
       repassword: '',
+      flash: '',
     };
     this.updateInputForm = this.updateInputForm.bind(this);
-    this.submitForm = this.submitForm.bind(this);
+    this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
 
   updateInputForm(e) {
     this.setState({[e.target.name]: e.target.value});
   }
 
-  submitForm(e) {
+  handleSubmitForm(e) {
     e.preventDefault();
+
+    fetch('/auth/signup', {
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+      body: JSON.stringify(this.state),
+    })
+      .then(res => res.json())
+      .then(res => this.setState({flash: res.flash}), err => this.setState({flash: err.flash}));
     console.log(this.state);
   }
 
@@ -49,7 +60,13 @@ class SignUp extends Component {
             <input type='password' name='repassword' onChange={this.updateInputForm} />
           </div>
 
-          <input className='submitButton' type='submit' value='Submit' />
+          <input
+            className='submitButton'
+            type='submit'
+            value='Submit'
+            onClick={this.handleSubmitForm}
+          />
+          <input className='resetButton' type='submit' value='Reset' onClick={this.state} />
         </form>
       </div>
     );

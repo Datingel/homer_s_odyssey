@@ -20,8 +20,8 @@ myRouter.post('/signup', function(req, res, next) {
     lastname: req.body.lastname || '',
   };
   connection.query('INSERT INTO users SET ?', newUser, function(error, results, fields) {
-    if (error) res.status(402).send(error);
-    else res.status(200).send('Registration Successful');
+    if (error) res.status(500).json({flash: error.message});
+    else res.status(200).json({flash: 'User has been signed upy!'});
   });
 });
 
